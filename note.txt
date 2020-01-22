@@ -1,0 +1,12 @@
+# To build the docker Image
+docker build .
+
+# To build the docker-compose
+# easily enable us to manage different 
+# services for our project
+docker-compose build
+
+
+#run django command 
+docker-compose run app sh -c "django-admin.py startproject app . "
+
