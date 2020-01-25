@@ -7,6 +7,7 @@ docker build .
 docker-compose build
 
 
+
 #run django command 
 docker-compose run app sh -c "django-admin.py startproject app . "
 docker-compose run app sh -c "django-admin.py startapp core"
