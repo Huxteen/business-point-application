@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework import viewsets, mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from .permissions import PostPermission
+
 
 from core.models import Post, Tag
 from post import serializers
@@ -34,11 +36,15 @@ class PostViewSet(viewsets.ModelViewSet):
   serializer_class = serializers.PostSerializer
   queryset = Post.objects.all()
   authentication_classes = (TokenAuthentication,)
-  permission_classes = (IsAuthenticated,)
+  permission_classes = (PostPermission,)
 
-  def get_queryset(self):
-    """retrieve the all post."""
-    return self.queryset.filter(user_id=self.request.user)
+
+  def get_serializer_class(self):
+    """Return appropriate serilizer class."""
+    if self.action == 'retrieve':
+      return serializers.PostDetailSerializer
+
+    return self.serializer_class
 
   
 

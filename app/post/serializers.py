@@ -11,9 +11,12 @@ class TagSerializer(serializers.ModelSerializer):
     read_only_fields = ('id',)
 
 
-
 class PostSerializer(serializers.ModelSerializer):
   """Serialize a post."""
+  tags = serializers.PrimaryKeyRelatedField(
+    many=True,
+    queryset=Tag.objects.all()
+  )
 
   class Meta:
     model = Post
@@ -22,3 +25,8 @@ class PostSerializer(serializers.ModelSerializer):
       'created', 'modified', 'tags'
     )
     read_only_fields = ('id',)
+
+  
+class PostDetailSerializer(PostSerializer):
+  """Serialize a post detail."""
+  tags = TagSerializer(many=True, read_only=True)
