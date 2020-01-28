@@ -1,6 +1,14 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 User = get_user_model()
+from core import models
+from core.models import Post
+
+
+
+def sample_user(email='test@gmail.com', password='austin12345'):
+  """Create a sample user"""
+  return User.objects.create_user(email, password)
 
 
 class ModelTests(TestCase):
@@ -37,4 +45,13 @@ class ModelTests(TestCase):
     )
     self.assertTrue(user.is_superuser)
     self.assertTrue(user.is_staff)
+
+  def test_post_str(self):
+    """Test the post string representation."""
+    post = Post.objects.create(
+      user_id=sample_user(),
+      title='Circular Economy:Tackling electronic waste in Nigeria',
+      body='We discuss Nigeria e-waste problem and how recycling and circularity can solve it',
+    )
+    self.assertEqual(str(post), post.title)
 
