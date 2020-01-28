@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from core import models
-from core.models import Post
 
 
 
@@ -46,9 +45,20 @@ class ModelTests(TestCase):
     self.assertTrue(user.is_superuser)
     self.assertTrue(user.is_staff)
 
+
+  def test_tag_str(self):
+    """Test the tag string representation."""
+    tag = models.Tag.objects.create(
+      user=sample_user(),
+      name='Nigeria'
+    )
+    
+    self.assertEqual(str(tag), tag.name)
+  
+
   def test_post_str(self):
     """Test the post string representation."""
-    post = Post.objects.create(
+    post = models.Post.objects.create(
       user_id=sample_user(),
       title='Circular Economy:Tackling electronic waste in Nigeria',
       body='We discuss Nigeria e-waste problem and how recycling and circularity can solve it',

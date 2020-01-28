@@ -43,17 +43,17 @@ class PrivatePostApiTests(TestCase):
         )
         self.client.force_authenticate(self.user)
 
-    # def test_retrieve_post(self):
-    #     """Test retrieving list of posts"""
-    #     sample_post(user_id=self.user)
-    #     sample_post(user_id=self.user)
+    def test_retrieve_post(self):
+        """Test retrieving list of posts"""
+        sample_post(user_id=self.user)
+        sample_post(user_id=self.user)
 
-    #     res = self.client.get(POST_URL)
+        res = self.client.get(POST_URL)
 
-    #     posts = Post.objects.all().order_by('-id')
-    #     serializer = PostSerializer(posts, many=True)
-    #     self.assertEqual(res.status_code, status.HTTP_200_OK)
-    #     self.assertEqual(res.data, serializer.data)
+        posts = Post.objects.all().order_by('-id')
+        serializer = PostSerializer(posts, many=True)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.data, serializer.data)
 
     
 

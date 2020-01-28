@@ -46,6 +46,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 
+class Tag(models.Model):
+  """Tag to be used for a Post."""
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  name = models.CharField(max_length=255)
+  created = models.DateTimeField(auto_now_add=True) 
+  modified = models.DateTimeField(auto_now=True) 
+
+  def __str__(self):
+    return self.name
+
 class Post(models.Model):
   """Post Object."""
   user_id = models.ForeignKey(User, on_delete=models.CASCADE)
