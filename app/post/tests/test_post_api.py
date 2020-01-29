@@ -81,6 +81,47 @@ class PrivatePostApiTests(TestCase):
       serializer = PostDetailSerializer(post)
       self.assertEqual(res.data, serializer.data)
 
+    
+    def test_create_post(self):
+      """Test creating post"""
+      payload = {
+        'user_id': self.user.id,
+        'title': 'How the world evolve',
+        'body': 'This is a demonstration on how the world eveolved'
+      }
+      res = self.client.post(POST_URL, payload)
+
+      self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+      post = Post.objects.get(id=res.data['id'])
+      self.assertEqual(post.title, payload['title'])
+      self.assertEqual(post.body, payload['body'])
+      self.assertEqual(post.user_id.id, payload['user_id'])
+      
+
+    def test_create_post_with_tag(self):
+      """Test creating a post with tags."""
+      tag1 = sample_tag(user=self.user, name='Ikeja')
+      tag2 = sample_tag(user=self.user, name='Lekki')
+
+      payload = {
+        'user_id': self.user.id,
+        'title': 'Places in Nigeria.',
+        'tags': [tag1.id, tag2.id],
+        'body': 'The body of the places'
+      }
+      res = self.client.post(POST_URL, payload)
+
+      self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+      post = Post.objects.get(id=res.data['id'])
+      tags = post.tags.all()
+      self.assertEqual(tags.count(), 2)
+      self.assertIn(tag1, tags)
+      self.assertIn(tag2, tags)
+
+
+
+
+
 
     
 

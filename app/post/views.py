@@ -46,6 +46,10 @@ class PostViewSet(viewsets.ModelViewSet):
 
     return self.serializer_class
 
+  def perform_create(self, serializer):
+    """Create post"""
+    serializer.save(user_id=self.request.user)
+
   
 
 
