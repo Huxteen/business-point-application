@@ -32,7 +32,7 @@ def sample_tag(user, name='Finance'):
 def sample_post(user_id, **params):
   """Create and return a sample post."""
   defaults = {
-    'title': 'sample post',
+    'title': 'sample post demo',
     'body': 'Hello our sample post body'
   }
   defaults.update(params)
@@ -107,7 +107,7 @@ class PrivatePostApiTests(TestCase):
         'user_id': self.user.id,
         'title': 'Places in Nigeria.',
         'tags': [tag1.id, tag2.id],
-        'body': 'The body of the places'
+        'body': 'The nature of the Country'
       }
       res = self.client.post(POST_URL, payload)
 
@@ -117,6 +117,74 @@ class PrivatePostApiTests(TestCase):
       self.assertEqual(tags.count(), 2)
       self.assertIn(tag1, tags)
       self.assertIn(tag2, tags)
+
+    def test_partial_update_post(self):
+      """Test updating a post with patch."""
+      post = sample_post(user_id=self.user)
+      post.tags.add(sample_tag(user=self.user))
+      new_tag = sample_tag(user=self.user, name='Blockchain')
+
+      payload = {
+        'title': 'Environment variable',
+        'tags': [new_tag.id]
+      }
+      url = detail_url(post.id)
+      self.client.patch(url, payload)
+
+      post.refresh_from_db()
+      self.assertEqual(post.title, payload['title'])
+      tags = post.tags.all()
+      self.assertEqual(len(tags), 1)
+      self.assertIn(new_tag, tags)
+
+
+    def test_full_update_post(self):
+      """Test updating a post with put."""
+      post = sample_post(user_id=self.user)
+      post.tags.add(sample_tag(user=self.user))
+      new_tag = sample_tag(user=self.user, name='Crypto currency')
+      payload = {
+        'user_id': self.user.id,
+        'title':'We love to code',
+        'body': 'coding is a fun event that keeps you always eager to learn new technology',
+        'tags': [new_tag.id]
+      }
+      url = detail_url(post.id)
+      self.client.put(url, payload)
+      
+      post.refresh_from_db()
+      self.assertEqual(post.title, payload['title'])
+      self.assertEqual(post.body, payload['body'])
+
+      tags = post.tags.all()
+      self.assertEqual(len(tags), 1)
+
+    
+    def test_filter_post_by_title(self):
+      """Test returning post searched post."""
+      post1 = sample_post(user_id=self.user, title="Hello programmer")
+      post2 = sample_post(user_id=self.user, title="We love programmer")
+      post3 = sample_post(user_id=self.user, title="The code defines you")
+      tag1 = sample_tag(user=self.user, name="Finance")
+      tag2 = sample_tag(user=self.user, name="Technology")
+      post1.tags.add(tag1)
+      post2.tags.add(tag2)
+      post3.tags.add(tag1)
+
+      res = self.client.get(
+        POST_URL,
+        {'search':f'programmer'}
+      )
+
+      serializer1 = PostSerializer(post1)
+      serializer2 = PostSerializer(post2)
+      serializer3 = PostSerializer(post3)
+
+      self.assertIn(serializer1.data, res.data)
+      self.assertIn(serializer2.data, res.data)
+      self.assertNotIn(serializer3.data, res.data)
+
+
 
 
 

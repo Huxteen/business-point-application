@@ -62,9 +62,9 @@ class Post(models.Model):
   # url = models.SlugField(max_length=40)
   title = models.CharField(max_length=255)
   body = models.TextField()
-  tags = models.CharField(max_length=255)
+  #tags = models.CharField(max_length=255)
   created = models.DateTimeField(auto_now_add=True) 
-  modified = models.DateTimeField(auto_now=True) 
+  modified = models.DateTimeField(auto_now=True)
   tags = models.ManyToManyField('Tag')
 
   def __str__(self):

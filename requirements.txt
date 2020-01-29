@@ -2,3 +2,6 @@ Django>=2.2.0,<3.0.2
 djangorestframework>=3.9.0,<3.11.0
 psycopg2>=2.7.5,<2.8.0
 flake8>=3.6.0,<3.7.9
+drf-yasg==1.17.0 
+#django-rest-swagger==2.2.0
+# requests2==2.16.0

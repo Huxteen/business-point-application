@@ -3,6 +3,7 @@ from rest_framework import viewsets, mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from .permissions import PostPermission
+from rest_framework import filters
 
 
 from core.models import Post, Tag
@@ -37,6 +38,8 @@ class PostViewSet(viewsets.ModelViewSet):
   queryset = Post.objects.all()
   authentication_classes = (TokenAuthentication,)
   permission_classes = (PostPermission,)
+  filter_backends = (filters.SearchFilter,)
+  search_fields = ('title',)
 
 
   def get_serializer_class(self):
@@ -49,6 +52,7 @@ class PostViewSet(viewsets.ModelViewSet):
   def perform_create(self, serializer):
     """Create post"""
     serializer.save(user_id=self.request.user)
+    # serializer.save()
 
   
 

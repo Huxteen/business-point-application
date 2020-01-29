@@ -17,7 +17,8 @@ class PostPermission(permissions.BasePermission):
         if view.action == 'list':
             return True
         elif view.action == 'create':
-           return request.user.is_authenticated
+          return request.user.is_authenticated
+          #return True
         elif view.action in ['retrieve', 'update', 'partial_update', 'destroy']:
             return True
         else:
