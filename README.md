@@ -1,7 +1,7 @@
 # steer-business-application
-A simple blog API with user management
+A simple blog post API with user management and Authentication and permissions.
 
-> Django and Django restframework to render API end point that enable you to CREATE, READ, DELETE, PUT, PATCH post.
+> Django and Django restframework to render API end point that enable you to CREATE, RETRIEVE, DELETE, PUT, PATCH blog post.
 
 ## Installation
 
