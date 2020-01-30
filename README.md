@@ -20,7 +20,7 @@ You would be able to run the application with
 
 To get started, you'll need to run the `docker-compose up`:
 
-The documentation for the API end points can be found in the root url of the application.
+The documentation for this API end points can be found at the root url of the application. Swagger UI module was used to achieve this.
 
 > `/`
 
