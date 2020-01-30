@@ -19,4 +19,5 @@ docker-compose run --rm app sh -c "pip3 install ../other_module/foo-1.0.tar.gz -
 # Working with python request
 https://www.pluralsight.com/guides/web-scraping-with-request-python
 
-
+#Swagger API
+https://pypi.org/project/drf-yasg/#configuration
