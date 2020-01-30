@@ -1,4 +1,4 @@
-# steer-business-application
+# Stears-business-application
 A simple blog post API with user management and Authentication and permissions.
 
 > Django and Django restframework to render API end point that enable you to CREATE, RETRIEVE, DELETE, PUT, PATCH blog post.
@@ -7,7 +7,7 @@ A simple blog post API with user management and Authentication and permissions.
 
 # clone the repository to your folder directory
 
-> `git clone https://github.com/Huxteen/steer-business-application.git`
+> `git clone https://github.com/Huxteen/Stears-business-application.git`
 
 # A running docker
 
