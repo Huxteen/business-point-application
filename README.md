@@ -32,20 +32,28 @@ or
 ## An overview of the API endpoint.
 
 # User End Point
-  /api/user/create/
-  /api/user/update/
-  /api/user/token/
+  > `/api/user/create/`
+
+  > `/api/user/update/`
+
+  > `/api/user/token/`
 
 # Tag End Point
-  api/tags/
-  /api/post/tags/{}/
-  /api/post/tags/{}/
-  /api/post/tags/{}/
+  > `api/tags/`
+
+  > `/api/post/tags/{}/`
+
+  > `/api/post/tags/{}/`
+
+  > `/api/post/tags/{}/`
 
 # Post End Point
-  /post/{}/
-  /api/post/{}/
-  /api/post/{}/
-  /api/post/{}/
+  > `/post/{}/`
+
+  > `/api/post/{}/`
+
+  > `/api/post/{}/`
+
+  > `/api/post/{}/`
 
 
