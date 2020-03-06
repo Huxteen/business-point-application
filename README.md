@@ -1,10 +1,10 @@
 # Business-point-application
 A business point application with a seamless
-###### > `User management endpoints to CREATE, RETRIEVE, PUT, PATCH Users`
-###### > `A secured and seamless POST API end point that enable loggedin user CREATE, RETRIEVE, DELETE, PUT, PATCH `
-###### > `The POST API endpoint also Authenticate, Authorize and grant permission to users.`
+###### > `User management endpoint to CREATE, RETRIEVE, PUT, PATCH Users`
+###### > `A secured and seamless POST API endpoint that enable loggedin user CREATE, RETRIEVE, DELETE, PUT, PATCH `
+###### > `The POST API endpoint also Authenticate, Authorize and grant permissions to different users.`
 ###### > `A simple blog POST API endpoint with user management and Authentication and permissions.`
-###### > `Django and Django restframework is used to render all API end point that enable you to CREATE, RETRIEVE, DELETE, PUT, PATCH within this POST app.`
+###### > `Django and Django restframework is used to render all API endpoint that enable you to CREATE, RETRIEVE, DELETE, PUT, PATCH within this POST app.`
 
 ## Installation
 
@@ -23,7 +23,7 @@ You would be able to run the application with
 
 To get started, you'll need to run the `docker-compose up`:
 
-The documentation for this API end points can be found at the root url of the application. Swagger UI module was used to achieve this.
+The documentation for this API endpoint can be found at the root url of the application. Swagger UI module was used to achieve this.
 
 > `/`
 
@@ -34,14 +34,14 @@ or
 
 ## An overview of the API endpoint.
 
-# User End Point
+# User Endpoint
   > `/api/user/create/`
 
   > `/api/user/update/`
 
   > `/api/user/token/`
 
-# Tag End Point
+# Tag Endpoint
   > `api/tags/`
 
   > `/api/post/tags/{}/`
@@ -50,7 +50,7 @@ or
 
   > `/api/post/tags/{}/`
 
-# Post End Point
+# Post Endpoint
   > `/post/{}/`
 
   > `/api/post/{}/`
