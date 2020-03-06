@@ -12,13 +12,13 @@ class UserSerializer(serializers.ModelSerializer):
 
   def create(self, validated_data):
     """Create a new user with encrypted password and return it."""
-
-    user = User.objects.create_user(
-      email=validated_data['email'].casefold(),
-      password=validated_data['password'],
-      name=validated_data['name'],
-    )
-    return user
+    return User.objects.create_user(**validated_data)
+    # user = User.objects.create_user(
+    #   email=validated_data['email'].casefold(),
+    #   password=validated_data['password'],
+    #   name=validated_data['name'],
+    # )
+    # return user
 
   def update(self, instance, validated_data):
     """Update a user, setting the password correctly and return it."""

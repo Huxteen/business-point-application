@@ -7,7 +7,7 @@ A simple blog post API with user management and Authentication and permissions.
 
 # clone the repository to your folder directory
 
-> `git clone https://github.com/Huxteen/Stears-business-application.git`
+> `https://github.com/Huxteen/business-point-application.git`
 
 # A running docker
 

@@ -31,6 +31,8 @@ class PublicUserApiTest(TestCase):
     }
 
     res = self.client.post(CREATE_USER_URL, payload)
+    print(res.data)
+    print(payload)
 
     self.assertEqual(res.status_code, status.HTTP_201_CREATED)
     user = User.objects.get(**res.data)
@@ -46,12 +48,19 @@ class PublicUserApiTest(TestCase):
     res = self.client.post(CREATE_USER_URL, payload)
     self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
+    print(res.data)
+    print(payload)
+
   def test_password_too_short(self):
     """Password must be more than 8 characters."""
     payload = {'email':'test@gmail.com', 'password': 'pw'}
     res = self.client.post(CREATE_USER_URL, payload)
 
     self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+    
+    print(res.data)
+    print(payload)
+    
     user_exists = User.objects.filter(
       email=payload['email']
     ).exists()
