@@ -1,7 +1,10 @@
-# Stears-business-application
-A simple blog post API with user management and Authentication and permissions.
-
-> Django and Django restframework to render API end point that enable you to CREATE, RETRIEVE, DELETE, PUT, PATCH blog post.
+# Business-point-application
+A business point application with a seamless
+> User management endpoints to CREATE, RETRIEVE, PUT, PATCH Users
+> A secured and seamless POST API end point that enable loggedin user CREATE, RETRIEVE, DELETE, PUT, PATCH 
+> The POST API endpoint also Authenticate, Authorize and grant permission to users.
+>A simple blog POST API endpoint with user management and Authentication and permissions.
+> Django and Django restframework is used to render all API end point that enable you to CREATE, RETRIEVE, DELETE, PUT, PATCH within this POST app.
 
 ## Installation
 
